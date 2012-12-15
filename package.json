@@ -1,0 +1,11 @@
+{ "name": "equal"
+, "description": ""
+, "keywords": []
+, "version": "0.0.0"
+, "author": "Erik Lundin <erik@wub.io>"
+, "homepage": "https://github.com/wub/equal"
+, "repository":
+  { "type": "git"
+  , "url": "https://github.com/wub/equal.git"
+  }
+}
