@@ -8,4 +8,5 @@
   { "type": "git"
   , "url": "https://github.com/wub/equal.git"
   }
+, "main": "./equal.js"
 }
