@@ -46,7 +46,10 @@ function compare(a, b, seen) {
   seen.b.push(b)
 
   if (type === '[object Error]') {
-    if (a.message !== b.message) {
+    var first = Error.prototype.toString.call(a)
+      , second = Error.prototype.toString.call(b)
+
+    if (first !== second) {
       return false
     }
   }
