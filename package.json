@@ -1,7 +1,7 @@
 { "name": "equal"
 , "description": "Strict equality evaluation with support for circular structures."
 , "keywords": ["equal", "circular"]
-, "version": "0.1.0"
+, "version": "0.1.1"
 , "author": "Erik Lundin <erik@wub.io>"
 , "homepage": "https://github.com/wub/equal"
 , "repository":
