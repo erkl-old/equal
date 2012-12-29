@@ -11,8 +11,9 @@ function equal(a, b, seen) {
     return true
   }
 
-  if (Number.isNaN(a)) {
-    return Number.isNaN(b)
+  // NaN check
+  if (a !== a) {
+    return b !== b
   }
 
   // identical primitive values and functions would have caused the function
