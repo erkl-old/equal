@@ -78,19 +78,23 @@ function equal(a, b, seen) {
     }
   }
 
-  else if (Buffer.isBuffer(a)) {
-    if ((a instanceof Buffer && !(b instanceof Buffer)) ||
-        (a instanceof SlowBuffer && !(b instanceof SlowBuffer))) {
+  else if (a instanceof Buffer) {
+    if (!(b instanceof Buffer)) {
       return false
     }
 
-    // discard keys relating to the underlying storage
     keys = keys.filter(function (key) {
-      if (a instanceof SlowBuffer) {
-        return key !== 'used'
-      }
-
       return key !== 'parent' && key !== 'offset'
+    })
+  }
+
+  else if (a instanceof SlowBuffer) {
+    if (!(b instanceof SlowBuffer)) {
+      return false
+    }
+
+    keys = keys.filter(function (key) {
+      return key !== 'used'
     })
   }
 
