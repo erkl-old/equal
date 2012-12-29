@@ -15,9 +15,10 @@ function compare(a, b, seen) {
     return Number.isNaN(b)
   }
 
-  // primitive values would have caused the call to return by now, if they
-  // were equal
-  if (!(a instanceof Object)) {
+  // identical primitive values and functions would have caused the function
+  // to return by now, so the fact that we've come this far means `a` and `b`
+  // can't be equal
+  if (!(a instanceof Object) || typeof a === 'function') {
     return false
   }
 
