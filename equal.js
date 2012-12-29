@@ -6,7 +6,7 @@ var SlowBuffer = require('buffer').SlowBuffer
  * Support for circular structures is implemented through the `seen` argument,
  * expected to be an object with the following signature: `{ a: [], b: [] }`.
  */
-function compare(a, b, seen) {
+function equal(a, b, seen) {
   if (a === b) {
     return true
   }
@@ -94,16 +94,17 @@ function compare(a, b, seen) {
     })
   }
 
-  return keys.reduce(function (ok, key) {
-    return ok && compare(a[key], b[key], seen)
-  }, true)
+  for (var j = 0; j < keys.length; j++) {
+    var key = keys[j]
+
+    if (!equal(a[key], b[key], seen)) {
+      return false
+    }
+  }
+
+  return true
 }
 
-/*
- * Simple wrapper for `compare`.
- */
-function equal(a, b) {
-  return compare(a, b, { a: [], b: [] })
+module.exports = function (a, b) {
+  return equal(a, b, { a: [], b: [] })
 }
-
-module.exports = equal
